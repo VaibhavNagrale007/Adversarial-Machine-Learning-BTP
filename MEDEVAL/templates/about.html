@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>About</title>
+{% endblock %}
+
+{% block body %}
+    <div id="guides">
+        <div id="guideList">
+            <div class="guide-list-wrapper">
+                <h2>About</h2>
+                <p>Explore about our webapp here.</p>
+                <ul>
+                    <li>
+                        <div class="list-content-wrapper">
+                            <h5>MEDEVAL Webapp</h5>
+                            <p>This Webapp evaluates your uploaded model on existing dataset for Pneumonia detection.</p>
+                            <p>It also evaluates your model on RED attack (black box attack) and FGSM attack (white box attack).</p>
+                            <p>It also suggest possible augmentation for training images to increase accuracy of uploaded model.</p>
+                            <p>Task remaining for modifying model and showing increase in accuracy after suggested augmentation.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="list-content-wrapper">
+                            <h5>Instructions for working</h5>
+                            <p>You can upload only zip file which will have your model.</p>
+                            <p>Model must be trained on images of size [height, width] = [224, 224] and
+                                images must be in RGB format (if B&W then change to RGB format).</p>
+                                <img src="../static/images/image-configuration.png" alt="Image configurations">
+                            <p>Model must have class mode as binary and should predict either 0(NORMAL) or 1(PNEUMONIA).</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="list-content-wrapper">
+                            <h5>Tasks for developer</h5>
+                            <p>For now only two attacks try adding more options [Done can be added more using foolbox]</p>
+                            <p>Dataset selection [Later do it when we have more dataset]</p>
+                            <p>Commet and make your code look good</p>
+                        </div>
+                    </li>
+                </ul>
+                <button class="accent-button" style="margin: 1rem;" onclick="location.href = '/'">Go Back</button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

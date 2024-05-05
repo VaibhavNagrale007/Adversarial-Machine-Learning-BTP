@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>MedEval - Upload your Model</title>
+{% endblock %}
+
+{% block body %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+        <div class="alert alert-{{ category }}" id="div_flash" onclick="removeFlash()">
+        {{ message }}
+        
+        </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    <div id="loading"></div>
+    <div class="app-wrapper" style="display: flex;">
+        <div id="dashboard">
+            <div class="userDashboard">
+                <header class="dashboard-header">
+                    <span class="date">
+                        <div>{{ date }}</div>
+                    </span>
+                    <h3>
+                        "Welcome, "
+                        <br>
+                        <span class="user">{{ profile()['name'] }}</span>
+                    </h3>
+                    <form method=POST enctype=multipart/form-data action="{{ url_for('home') }}">
+                        <input class="form-element" type="file" id="media" name="media">
+                        <div class="form-element">
+                            <select name="choose_attacks" id="attack">
+                                <option value="no_selection">Choose an Attack</option>
+                                <option value="red">RED Attack</option>
+                                <option value="fgsm">FGSM Attack</option>
+                              </select>
+                        </div>
+                        <button class="accent-button" type="submit" name="anything_submit" value="Submit">
+                            Submit
+                        </button>
+                    </form>
+                </header>
+                <div class="quick-links">
+                    <article>
+                        <h5>Choose Dataset</h5>
+                    </article>
+                    <!-- For choosing dataset create form and put condition on path to choose -->
+                    <div class="links-wrapper"> 
+                        <div class="higlight">
+                            <div class="link-element upload" tabindex="1">
+                                <div class="image-wrapper image-dataset1"></div>
+                                <div class="content-wrapper relative">
+                                    <h4>
+                                        "Xray Pneumonia"
+                                    </h4>
+                                    <p>
+                                        This is xray pneumonia dataset, 
+                                        here we will test your model on dataset we have.
+                                        Upload your model here for evaluation.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="link-element upload" tabindex="1">
+                                <div class="image-wrapper image-dataset2"></div>
+                                <div class="content-wrapper relative">
+                                    <h4>
+                                        "Dataset 2"
+                                    </h4>
+                                    <p>
+                                        This is sample dataset 2, 
+                                        here we will test your model on dataset we have.
+                                        Upload your model here for evaluation.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="link-element upload" tabindex="1">
+                                <div class="image-wrapper  image-dataset3"></div>
+                                <div class="content-wrapper relative">
+                                    <h4>
+                                        "Dataset 3"
+                                    </h4>
+                                    <p>
+                                        This is sample dataset 3, 
+                                        here we will test your model on dataset we have.
+                                        Upload your model here for evaluation.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Remove flash on click -->
+    <script>
+        function removeFlash() {
+            const element = document.getElementById('div_flash');
+            element.remove();
+        }
+    </script>
+
+{% endblock %}

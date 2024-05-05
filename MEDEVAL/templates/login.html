@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>MedEval - Evaluate your Model</title>
+{% endblock %}
+
+{% block body %}
+
+<section class="hero-section">
+  <div id="product-gallery"></div>
+  <div class="hero-container">
+    <div class="hero-text-wrapper">
+      <div class="css-zvi4ix" style="animation-delay: 0ms;">
+        <h1>
+          "Upload your model for "
+          <span>Evaluation</span>
+          "and get better "
+          <span>Results</span>
+          "visit about for more information."
+        </h1>
+      </div>
+      <div class="css-zvi4ix" style="animation-delay: 200ms;">
+        <p>
+          "This app offer service to evaluate your model on the
+          dataset we have. The results will be given to you through
+          email after you upload your model."
+        </p>
+      </div>
+      <div class="css-zvi4ix" style="animation-delay: 400ms;">
+        <div class="button-container">
+          <button class="accent-button">
+            {%if profile() %}
+              <a href="{{ url_for('home') }}">Go To Home</a>
+            {%else%}
+              <a href="{{ url_for('login') }}">Google Login</a>
+            {% endif %}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="gradients"></div>
+</section>
+
+{% endblock %}

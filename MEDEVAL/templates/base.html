@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    {% block head %} {% endblock %}
+</head>
+<body>
+    <div class="App uncodeLandingPage">
+        <nav class="hero">
+            <div class="logo-container">
+                <a href="{{ url_for('welcome') }}">
+                    <h1>MedEval</h1>
+                </a>
+            </div>
+            <ul class="menu-list-items">
+                <li>
+                    <a href="{{ url_for('about') }}">About</a>
+                </li>
+                {%if profile() %}
+                    <li>{{ profile()['name'] }}</li>
+                    <li class="profile">
+                        <img src="{{ profile()['picture'] }}" alt="profile image" style="height: 2rem; width: 2rem;">
+                    </li>
+                    <li>
+                        <button class="accent-button">
+                            <a href="{{url_for('logout')}}">Logout</a>
+                        </button>
+                    </li>
+                {%else%}
+                    <li>
+                        <button class="accent-button">
+                            <a href="{{url_for('login')}}">Login</a>
+                        </button>
+                    </li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% block body %} {% endblock %}
+    </div>
+</body>
+</html>
